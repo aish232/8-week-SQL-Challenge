@@ -1,10 +1,12 @@
 ##1) What is the total amount each customer spent at the restaurant?
+
 SELECT S.CUSTOMER_ID , SUM(M.PRICE) AS MONEY_SPENT
 FROM SALES AS S INNER JOIN MENU AS M
 ON S.PRODUCT_ID = M.PRODUCT_ID
 GROUP BY S.CUSTOMER_ID ;
 
 ##2) How many days has each customer visited the restaurant?
+
 SELECT S.CUSTOMER_ID , COUNT(DISTINCT ORDER_DATE) AS NUMBER_OF_VISITS
 FROM SALES AS S 
 GROUP BY S.CUSTOMER_ID;
@@ -21,6 +23,7 @@ ON S.PRODUCT_ID = M.PRODUCT_ID
 
 
 ##4) What is the most purchased item on the menu and how many times was it purchased by all customers?
+
 SELECT M.PRODUCT_NAME, COUNT(S.PRODUCT_ID) AS COUNT_OF_PURCHASE
 FROM SALES AS S INNER JOIN MENU AS M
 ON S.PRODUCT_ID = M.PRODUCT_ID
@@ -30,6 +33,7 @@ LIMIT 1;
 
 
 ##5) Which item was the most popular for each customer?
+
 SELECT CUSTOMER_ID , PRODUCT_NAME AS MOST_POPULAR_PRODUCT,PRODUCT_COUNT
 FROM 
 (
@@ -43,6 +47,7 @@ FROM
         GROUP BY S.CUSTOMER_ID ,M.PRODUCT_NAME
 	) A 
 ) B WHERE RNK = 1;
+
 
 ##6) Which item was purchased first by the customer after they became a member?
 
@@ -58,7 +63,9 @@ FROM
 	WHERE S.ORDER_DATE >= M.JOIN_DATE
 ) A WHERE RNK = 1;
 
+
 ##7) Which item was purchased just before the customer became a member?
+
 SELECT A.CUSTOMER_ID ,ORDER_DATE, A.PRODUCT_NAME AS FIRST_PURCHASED_PRODUCT
 FROM 
 (
@@ -70,6 +77,7 @@ FROM
 	WHERE S.ORDER_DATE < M.JOIN_DATE
 ) A WHERE RNK = 1;
 
+
 ##8)What is the total items and amount spent for each member before they became a member?
  
 SELECT S.CUSTOMER_ID , COUNT(DISTINCT N.PRODUCT_NAME) AS TOTAL_ITEMS_UNIQUE , SUM(PRICE) AS AMOUNT_SPENT
@@ -80,8 +88,7 @@ ON S.PRODUCT_ID = N.PRODUCT_ID
 WHERE S.ORDER_DATE < M.JOIN_DATE
 GROUP BY S.CUSTOMER_ID ;
 
-## 9) If each $1 spent equates to 10 points and sushi has a 2x points multiplier - 
-#how many points would each customer have?
+## 9) If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 
 WITH POINTS_TABLE AS
 (
@@ -101,9 +108,9 @@ GROUP BY S.CUSTOMER_ID,P.PRODUCT_NAME,P.POINTS
 ) A
 GROUP BY CUSTOMER_ID;
 
-## 10)In the first week after a customer joins the program (including their join date) they earn 
-#2x points on all items, not just sushi - #how many points do customer A and B have at 
-#the end of January?
+
+## 10)In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - #how many points do 
+#customer A and B have at the end of January?
 
 WITH DATE_TABLE AS 
 (
