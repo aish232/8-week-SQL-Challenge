@@ -1,4 +1,10 @@
+<p align="center">
+Case Study #1 - Danny's Diner
+</p>
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/37181222/228696121-b1caf63f-922f-41b1-9561-ee54115d7029.png" width=50% height=50%>
+</p>
 
 ## Introduction 
 
