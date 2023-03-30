@@ -1,6 +1,6 @@
 # 8 Week SQL Challenge
 
-This repository contains the solutions for [8 Week SQL Challenge](https://8weeksqlchallenge.com/getting-started/) which is started by Danny Ma.
+This repository contains the solutions for [8 Week SQL Challenge](https://8weeksqlchallenge.com/getting-started/) which was started by Danny Ma.
 
 Case Study Challenges :
 
